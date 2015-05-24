@@ -24,7 +24,11 @@ module Snapdragon
       else
         session.visit("/run")
       end
-      session.find("#testscomplete")
+      if @suite.jasmine_ver == '1'
+        session.find("#testscomplete") rescue nil
+      else
+        session.find("#testscomplete")
+      end
       return 0
     end
 
